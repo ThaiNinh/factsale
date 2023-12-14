@@ -1,0 +1,731 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/12/2023 2:00:27 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-MDKHJDRB"
+  DTS:CreatorName="LAPTOP-MDKHJDRB\HP"
+  DTS:DTSID="{13C9CFD1-E71E-4E47-B104-BE13540A50A4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{785177B2-D5D6-432E-9ACA-EEDD63306AC0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[.\SQLEXPRESS01.WWI_DW_12]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{76E79261-9175-4EE9-9672-9E0F5428C4B7}"
+      DTS:ObjectName=".\SQLEXPRESS01.WWI_DW_12">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.\SQLEXPRESS01;Initial Catalog=WWI_DW_12;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{76E79261-9175-4EE9-9672-9E0F5428C4B7}.\SQLEXPRESS01.WWI_DW_12;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Store"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B65BE83B-1802-47FC-A7D1-FBA53A8CBA49}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Store"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Store\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Store]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Store\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[.\SQLEXPRESS01.WWI_DW_12]"
+                  connectionManagerRefId="Package.ConnectionManagers[.\SQLEXPRESS01.WWI_DW_12]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Continent]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Continent"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Continent]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Continent]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Subregion]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Subregion"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Subregion]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subregion]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Location]"
+                      cachedDataType="image"
+                      cachedName="Location"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Location]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CityID]"
+                      cachedDataType="i4"
+                      cachedName="CityID"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI City ID]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CityName"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StateProvinceName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StateProvinceName"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State Province]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[StateProvinceName]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="CountryName"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SalesTerritory]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SalesTerritory"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sales Territory]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesTerritory]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LatestRecordedPopulation]"
+                      cachedDataType="i8"
+                      cachedName="LatestRecordedPopulation"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Latest Recorded Population]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[LatestRecordedPopulation]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ValidFrom]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="ValidFrom"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid From]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[ValidFrom]" />
+                    <inputColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ValidTo]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="ValidTo"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid To]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[ValidTo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City Key]"
+                      dataType="i4"
+                      name="City Key" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WWI City ID]"
+                      dataType="i4"
+                      name="WWI City ID" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="50"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State Province]"
+                      dataType="wstr"
+                      length="50"
+                      name="State Province" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="60"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Continent]"
+                      dataType="wstr"
+                      length="30"
+                      name="Continent" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sales Territory]"
+                      dataType="wstr"
+                      length="50"
+                      name="Sales Territory" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="30"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Subregion]"
+                      dataType="wstr"
+                      length="30"
+                      name="Subregion" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      dataType="image"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Latest Recorded Population]"
+                      dataType="i8"
+                      name="Latest Recorded Population" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid From]"
+                      dataType="dbTimeStamp2"
+                      name="Valid From"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valid To]"
+                      dataType="dbTimeStamp2"
+                      name="Valid To"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Store\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Store\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Store\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Store\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Store\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select Application.Cities_Archive.CityID, 
+Application.Cities_Archive.CityName,
+Application.StateProvinces_Archive.StateProvinceName,
+Application.Countries_Archive_T.CountryName,
+Application.Countries_Archive_T.Continent,
+Application.StateProvinces_Archive.SalesTerritory,
+Application.Countries_Archive_T.Region,
+Application.Countries_Archive_T.Subregion,
+Application.Cities_Archive.Location,
+Application.StateProvinces_Archive.LatestRecordedPopulation,
+Application.Cities_Archive.ValidFrom,
+Application.Cities_Archive.ValidTo
+
+from Application.StateProvinces_Archive join Application.Countries_Archive_T  
+on Application.StateProvinces_Archive.CountryID = Application.Countries_Archive_T.CountryID
+join Application.Cities_Archive 
+on Application.Cities_Archive.StateProvinceID = Application.StateProvinces_Archive.StateProvinceID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Store\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{E5FE1ACE-4249-4E2F-99D0-A03B3DD381D2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[__SQLEXPRESS01.WideWorldImporters]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityID]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]"
+                      name="CityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      length="50"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]"
+                      name="CityName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StateProvinceName]"
+                      length="50"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[StateProvinceName]"
+                      name="StateProvinceName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      length="60"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      name="CountryName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Continent]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Continent]"
+                      length="30"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Continent]"
+                      name="Continent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesTerritory]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritory]"
+                      length="50"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesTerritory]"
+                      name="SalesTerritory"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                      length="30"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subregion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subregion]"
+                      length="30"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Subregion]"
+                      name="Subregion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Location]"
+                      dataType="image"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[LatestRecordedPopulation]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LatestRecordedPopulation]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[LatestRecordedPopulation]"
+                      name="LatestRecordedPopulation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[ValidFrom]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ValidFrom]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[ValidFrom]"
+                      name="ValidFrom"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[ValidTo]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ValidTo]"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].Columns[ValidTo]"
+                      name="ValidTo"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityID]"
+                      dataType="i4"
+                      name="CityID" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="50"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      dataType="wstr"
+                      length="60"
+                      name="CountryName" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Continent]"
+                      dataType="wstr"
+                      length="30"
+                      name="Continent" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesTerritory]"
+                      dataType="wstr"
+                      length="50"
+                      name="SalesTerritory" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="30"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Subregion]"
+                      dataType="wstr"
+                      length="30"
+                      name="Subregion" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      dataType="image"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LatestRecordedPopulation]"
+                      dataType="i8"
+                      name="LatestRecordedPopulation" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ValidFrom]"
+                      dataType="dbTimeStamp2"
+                      name="ValidFrom"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ValidTo]"
+                      dataType="dbTimeStamp2"
+                      name="ValidTo"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityID]"
+                      dataType="i4"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityID]"
+                      name="CityID" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      name="CityName" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StateProvinceName]"
+                      name="StateProvinceName" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      name="CountryName" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Continent]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Continent]"
+                      name="Continent" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesTerritory]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesTerritory]"
+                      name="SalesTerritory" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Region]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subregion]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Subregion]"
+                      name="Subregion" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      dataType="image"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LatestRecordedPopulation]"
+                      dataType="i8"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LatestRecordedPopulation]"
+                      name="LatestRecordedPopulation" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ValidFrom]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ValidFrom]"
+                      name="ValidFrom"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ValidTo]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ValidTo]"
+                      name="ValidTo"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Store\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Store.Paths[OLE DB Source Output]"
+              endId="Package\Store\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Store\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="103.2,41.6"
+          Id="Package\Store"
+          TopLeft="336.666648272012,85.7999994033575" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Store">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Store\OLE DB Source"
+          TopLeft="425.833310066827,100.533332634237" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Store\OLE DB Destination"
+          TopLeft="654.166630924577,102.266665955517" />
+        <EdgeLayout
+          Id="Package\Store.Paths[OLE DB Source Output]"
+          TopLeft="577.833310066827,122.199999294877">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76.3333208577507,0"
+              Start="0,0"
+              End="68.8333208577507,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="68.8333208577507,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Store\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Store\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

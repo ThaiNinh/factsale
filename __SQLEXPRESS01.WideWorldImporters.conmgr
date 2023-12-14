@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="__SQLEXPRESS01.WideWorldImporters"
+  DTS:DTSID="{E5FE1ACE-4249-4E2F-99D0-A03B3DD381D2}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.\SQLEXPRESS01;Initial Catalog=WideWorldImporters;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Integration Services Project1-{E5FE1ACE-4249-4E2F-99D0-A03B3DD381D2}.\SQLEXPRESS01.WideWorldImporters;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
